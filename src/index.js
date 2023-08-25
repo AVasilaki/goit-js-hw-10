@@ -1,5 +1,6 @@
 import axios from 'axios';
-
+import { fetchBreeds } from './cat-api';
+fetchBreeds();
 axios.defaults.headers.common['x-api-key'] =
   'live_0JtGVSBqjiasWh5nfxpRM1Q6z3bcX9aPfbx9j9i4imJDYV6mB8JMAUyzAvBAq9oV';
 const select = document.querySelector('select');
