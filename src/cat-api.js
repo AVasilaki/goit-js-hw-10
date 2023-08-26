@@ -16,4 +16,16 @@ function fetchBreeds() {
     .finally(function () {});
 }
 
-export { fetchBreeds };
+function fetchCatByBreed(breedId) {
+  return axios
+    .get(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
+    .then(function (response) {
+      console.log(response.data[0].breeds[0].name, 'a');
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {});
+}
+
+export { fetchBreeds, fetchCatByBreed };
