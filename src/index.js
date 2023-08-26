@@ -28,10 +28,23 @@ function handlerCat(evt) {
   const aboutCat = fetchCatByBreed(cat);
   console.log(aboutCat);
 
-  select.classList;
-  console.log(cat);
+  // select.classList;
+  // console.log(cat);
 }
+// arr.map(({date, day : {avgtemp_c , condition : {icon, text}}})
 function catMarkup(arr) {
-  arr.map(({}) => ``).join('');
+  return arr
+    .map(
+      ({
+        url,
+        breeds: {
+          0: { name, description, temperament },
+        },
+      }) => `<img class="img" src="${url}" alt="" width ='300px'/>
+      <p class="name">${name}</p>
+      <p class="description">${description}</p>
+      <p class="temperament">${temperament}</p>`
+    )
+    .join('');
 }
-export { createMarckup, select };
+export { createMarckup, select, inform, catMarkup };
