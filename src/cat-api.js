@@ -12,9 +12,7 @@ function fetchBreeds() {
 
     .catch(function (error) {
       return error;
-      // throw new Error(response.statusText);
     });
-  // .finally(function () {});
 }
 
 function fetchCatByBreed(breedId) {
