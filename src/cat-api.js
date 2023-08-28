@@ -9,10 +9,12 @@ function fetchBreeds() {
     .then(function (response) {
       return response.data;
     })
+
     .catch(function (error) {
       return error;
-    })
-    .finally(function () {});
+      // throw new Error(response.statusText);
+    });
+  // .finally(function () {});
 }
 
 function fetchCatByBreed(breedId) {
@@ -23,7 +25,7 @@ function fetchCatByBreed(breedId) {
     })
 
     .catch(function (error) {
-      return error;
+      console.log(error);
     })
     .finally(function () {});
 }
