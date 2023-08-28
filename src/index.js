@@ -49,7 +49,30 @@ function handlerCat(evt) {
   inform.innerHTML = '';
   fetchCatByBreed(cat)
     .then(data => inform.insertAdjacentHTML('beforeend', catMarkup(data)))
-    .catch();
+    .catch(function (error) {
+      if (error.response) {
+        // Запит було зроблено, і сервер відповів кодом стану, який
+        // виходить за межі 2xx
+        err.classList.remove('js-error-hidden');
+        loader.classList.add('js-loader-hidden');
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // Запит було зроблено, але відповіді не отримано
+        // `error.request` - це екземпляр XMLHttpRequest у браузері та екземпляр
+        // http.ClientRequest у node.js
+        err.classList.remove('js-error-hidden');
+        loader.classList.add('js-loader-hidden');
+        console.log(error.request);
+      } else {
+        // Щось сталося під час налаштування запиту, що викликало помилку
+        console.log('Error', error.message);
+        err.classList.remove('js-error-hidden');
+        loader.classList.add('js-loader-hidden');
+      }
+      console.log(error.config);
+    });
 }
 
 function catMarkup(arr) {

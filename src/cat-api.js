@@ -25,7 +25,7 @@ function fetchCatByBreed(breedId) {
     })
 
     .catch(function (error) {
-      console.log(error);
+      return error;
     })
     .finally(function () {});
 }
